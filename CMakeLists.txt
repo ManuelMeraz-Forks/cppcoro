@@ -18,9 +18,13 @@ if(BUILD_TESTING)
     add_subdirectory(test)
 endif()
 
+configure_file(cmake/Findliburing.cmake lib/cmake/liburing/liburingConfig.cmake)
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib/cmake DESTINATION lib)
+
 export(EXPORT cppcoroTargets
   FILE "${PROJECT_BINARY_DIR}/cppcoro/cppcoroTargets.cmake"
   NAMESPACE cppcoro::)
+
 configure_file(cmake/cppcoroConfig.cmake
     "${PROJECT_BINARY_DIR}/cppcoro/cppcoroConfig.cmake"
     COPYONLY)
